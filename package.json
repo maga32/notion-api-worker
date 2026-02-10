@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "tsx watch server.ts",
+    "prod": "node build/server.js",
+    "build": "tsc"
+  },
   "dependencies": {
+    "@hono/node-server": "^1.19.9",
     "hono": "^4.10.0"
   },
   "devDependencies": {
     "@types/node": "^24.8.1",
     "prettier": "^3.3.3",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "packageManager": "bun"

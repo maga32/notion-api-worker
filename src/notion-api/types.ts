@@ -92,11 +92,13 @@ export interface CollectionType {
 
 export interface RowType {
   value: {
-    id: string;
-    parent_id: string;
-    properties: { [key: string]: DecorationType[] };
+    value: {
+      id: string;
+      parent_id: string;
+      properties: { [key: string]: DecorationType[] };
+    };
   };
-}
+};
 
 export type JSONData =
   | null

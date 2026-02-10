@@ -35,7 +35,7 @@ export const getTableData = async (
 
   const tableData = tableArr.filter(
     (b) =>
-      b.value && b.value.properties && b.value.parent_id === collection.value.id
+      b.value.value && b.value.value.properties && b.value.value.parent_id === collection.value.id
   );
 
   type Row = { id: string; [key: string]: RowContentType };
@@ -43,10 +43,10 @@ export const getTableData = async (
   const rows: Row[] = [];
 
   for (const td of tableData) {
-    let row: Row = { id: td.value.id };
+    let row: Row = { id: td.value.value.id };
 
     for (const key of collectionColKeys) {
-      const val = td.value.properties[key];
+      const val = td.value.value.properties[key];
       if (val) {
         const schema = collectionRows[key];
         row[schema.name] = raw ? val : getNotionValue(val, schema.type, td);
