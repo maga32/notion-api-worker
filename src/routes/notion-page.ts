@@ -71,14 +71,14 @@ export async function pageRoute(c: HandlerRequest) {
       )[0];
 
       const collView: {
-        value: { id: CollectionType["value"]["id"] };
+        value: { value: { id: CollectionType["value"]["value"]["id"] }};
       } = Object.keys(collPage.recordMap.collection_view).map(
         (k) => collPage.recordMap.collection_view[k]
       )[0];
 
       const { rows, schema } = await getTableData(
         coll,
-        collView.value.id,
+        collView.value.value.id,
         notionToken,
         true
       );
@@ -88,7 +88,7 @@ export async function pageRoute(c: HandlerRequest) {
       allBlocks[b] = {
         ...allBlocks[b],
         collection: {
-          title: coll.value.name,
+          title: coll.value.value.name,
           schema,
           types: viewIds.map((id) => {
             const col = collPage.recordMap.collection_view[id];

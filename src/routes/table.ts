@@ -20,12 +20,12 @@ export const getTableData = async (
   raw?: boolean
 ) => {
   const table = await fetchTableData(
-    collection.value.id,
+    collection.value.value.id,
     collectionViewId,
     notionToken
   );
 
-  const collectionRows = collection.value.schema;
+  const collectionRows = collection.value.value.schema;
   const collectionColKeys = Object.keys(collectionRows);
 
   const tableArr: RowType[] =
@@ -35,7 +35,7 @@ export const getTableData = async (
 
   const tableData = tableArr.filter(
     (b) =>
-      b.value.value && b.value.value.properties && b.value.value.parent_id === collection.value.id
+      b.value.value && b.value.value.properties && b.value.value.parent_id === collection.value.value.id
   );
 
   type Row = { id: string; [key: string]: RowContentType };
@@ -78,14 +78,14 @@ export async function tableRoute(c: HandlerRequest) {
   )[0];
 
   const collectionView: {
-    value: { id: CollectionType["value"]["id"] };
+    value: {value: {id: CollectionType["value"]["value"]["id"]}};
   } = Object.keys(page.recordMap.collection_view).map(
     (k) => page.recordMap.collection_view[k]
   )[0];
 
   const { rows } = await getTableData(
     collection,
-    collectionView.value.id,
+    collectionView.value.value.id,
     notionToken
   );
 

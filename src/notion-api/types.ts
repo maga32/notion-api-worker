@@ -78,15 +78,17 @@ export interface BaseValueType {
 
 export interface CollectionType {
   value: {
-    id: string;
-    version: number;
-    name: string[][];
-    schema: { [key: string]: ColumnSchemaType };
-    icon: string;
-    parent_id: string;
-    parent_table: string;
-    alive: boolean;
-    copied_from: string;
+    value: {
+      id: string;
+      version: number;
+      name: string[][];
+      schema: { [key: string]: ColumnSchemaType };
+      icon: string;
+      parent_id: string;
+      parent_table: string;
+      alive: boolean;
+      copied_from: string;
+    }
   };
 }
 
@@ -141,8 +143,10 @@ export interface RecordMapType {
   collection_view: {
     [key: string]: {
       value: {
-        id: string;
-        type: CollectionViewType;
+        value: {
+          id: string;
+          type: CollectionViewType;
+        };
       };
     };
   };
