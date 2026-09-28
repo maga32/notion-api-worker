@@ -33,6 +33,7 @@ const fetchNotionData = async <T extends any>({
     method: "POST",
     headers: {
       "content-type": "application/json",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
       ...(notionToken && { cookie: `token_v2=${notionToken}` }),
       ...headers,
     },
